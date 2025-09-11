@@ -1,0 +1,19 @@
+@use "./reset.scss";
+
+:root {
+  --font-geist-sans: "Geist Sans", sans-serif;
+  --font-playball: "Playball", cursive;
+  --font-roboto: "Playball", sans-serif;
+}
+
+body {
+  font-family: var(--font-geist-sans);
+  scroll-behavior: smooth;
+}
+
+.wrapp-1200 {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
