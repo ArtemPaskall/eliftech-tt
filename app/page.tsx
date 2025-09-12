@@ -4,6 +4,7 @@ import "@/app/styles/globals.scss"
 import Link from "next/link"
 import plus from "@/public/plus.svg"
 import Image from "next/image"
+import { categories } from "@/models/categories"
 
 export default async function Home() {
   return (
@@ -15,7 +16,18 @@ export default async function Home() {
           <Image src={plus} alt="plus" className={st["plus-img"]}></Image>
           Add Flower
         </Link>
-        <div className={st["bottom-padding"]}>sdfsfd</div>
+        <div className={st["content-wrapp"]}>
+          <div className={st["category-wrapp"]}>
+            {categories.map((category) => (
+              <div key={category} className={st["category-button"]}>
+                {category}
+              </div>
+            ))}
+          </div>
+          <div>
+            
+          </div>
+        </div>
       </main>
     </>
   )
