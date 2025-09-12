@@ -1,9 +1,10 @@
 @use "./reset.scss";
+@use "./mixins.scss" as *;
 
 :root {
   --font-geist-sans: "Geist Sans", sans-serif;
   --font-playball: "Playball", cursive;
-  --font-roboto: "Playball", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
 }
 
 body {
@@ -16,4 +17,8 @@ body {
   max-width: 1200px;
   padding: 0 40px;
   margin: 0 auto;
+
+  @include mobile {
+    padding: 0 20px;
+  }
 }

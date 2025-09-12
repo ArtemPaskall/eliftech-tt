@@ -1,6 +1,7 @@
 import st from "./page.module.scss"
 import "@/app/styles/globals.scss"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Header() {
   return (
@@ -8,15 +9,17 @@ export default function Header() {
       <div className="wrapp-1200">
         <nav className={st["header-nav"]}>
           <ul className={st["header-nav-inner"]}>
-            <li>Home</li>
+            <li>
+              <Link href={"/"}>Home</Link>
+            </li>
             <li>History</li>
             <li>Coupons</li>
           </ul>
 
-          <div className={st["cart"]}>
+          <Link href="cart" className={st["cart"]}>
             <Image src="cart.svg" alt="cart" width={35} height={35}></Image>
             <div className={st["cart-value"]}>0</div>
-          </div>
+          </Link>
         </nav>
         <div className={st["header-wrapp"]}>
           <Image
