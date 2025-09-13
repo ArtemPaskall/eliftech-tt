@@ -1,9 +1,13 @@
+"use client"
 import st from "./page.module.scss"
 import "@/app/styles/globals.scss"
 import Image from "next/image"
 import Link from "next/link"
+import { useCart } from "@/context/CartContext"
 
 export default function Header() {
+  const { cart } = useCart()
+
   return (
     <header className={st["header"]}>
       <div className="wrapp-1200">
@@ -18,7 +22,7 @@ export default function Header() {
 
           <Link href="cart" className={st["cart"]}>
             <Image src="cart.svg" alt="cart" width={35} height={35}></Image>
-            <div className={st["cart-value"]}>0</div>
+            <div className={st["cart-value"]}>{cart.length}</div>
           </Link>
         </nav>
         <div className={st["header-wrapp"]}>

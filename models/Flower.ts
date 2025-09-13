@@ -1,18 +1,17 @@
-import mongoose, { Schema, Document, Model } from "mongoose"
+import mongoose, { Schema, Model } from "mongoose"
 import { categories } from "./categories"
-import { Types } from "mongoose"
 
-export interface IFlower extends Document {
-  _id: Types.ObjectId
+export type FlowerType = {
+  _id: string
   category: string
   title: string
   description?: string
   price: number
   favourite: boolean
-  createdAt: Date
+  createdAt: string
 }
 
-const FlowerSchema = new Schema<IFlower>({
+const FlowerSchema = new Schema<FlowerType>({
   category: {
     type: String,
     required: true,
@@ -22,12 +21,14 @@ const FlowerSchema = new Schema<IFlower>({
   description: { type: String },
   price: { type: Number, required: true },
   favourite: { type: Boolean, default: false },
-  createdAt: { type: Date, default: Date.now },
+  createdAt: {
+    type: String,
+    default: () => new Date().toISOString(), 
+  },
 })
 
-// Безпечний патерн для dev hot-reload
-const Flower: Model<IFlower> =
-  (mongoose.models.Flower as Model<IFlower>) ||
-  mongoose.model<IFlower>("Flower", FlowerSchema)
+const Flower: Model<FlowerType> =
+  (mongoose.models.Flower as Model<FlowerType>) ||
+  mongoose.model<FlowerType>("Flower", FlowerSchema)
 
 export default Flower

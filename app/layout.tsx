@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Geist, Playball, Roboto } from "next/font/google"
 import "./styles/globals.scss"
+import { CartProvider } from "@/context/CartContext"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${playballSans.variable} ${roboto.variable}`}
       >
-        {children}
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   )

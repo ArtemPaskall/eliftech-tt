@@ -6,13 +6,18 @@ import plus from "@/public/plus.svg"
 import Image from "next/image"
 import { categories } from "@/models/categories"
 import connectDB from "@/lib/mongoDB"
-import Flower, { IFlower } from "@/models/Flower"
+import Flower, { FlowerType } from "@/models/Flower"
 import FlowerCard from "@/components/FlowerCard/page"
 
 export default async function Home() {
   await connectDB()
-  const flowers = await Flower.find().lean<IFlower[]>()
-  console.log(flowers)
+  const flowersFromDb = await Flower.find().lean()
+
+  const flowers: FlowerType[] = flowersFromDb.map((f) => ({
+    ...f,
+    _id: f._id.toString(),
+    createdAt: new Date(f.createdAt).toISOString(),
+  }))
 
   return (
     <>
@@ -34,7 +39,7 @@ export default async function Home() {
           </div>
           <div className={st["content-wrapp"]}>
             {flowers.map((flower) => (
-              <FlowerCard key={flower._id.toString()} flower={flower} />
+              <FlowerCard key={flower._id} flower={flower} />
             ))}
           </div>
         </div>
