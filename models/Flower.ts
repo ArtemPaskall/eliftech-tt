@@ -1,7 +1,9 @@
 import mongoose, { Schema, Document, Model } from "mongoose"
 import { categories } from "./categories"
+import { Types } from "mongoose"
 
 export interface IFlower extends Document {
+  _id: Types.ObjectId
   category: string
   title: string
   description?: string

@@ -5,27 +5,37 @@ import Link from "next/link"
 import plus from "@/public/plus.svg"
 import Image from "next/image"
 import { categories } from "@/models/categories"
+import connectDB from "@/lib/mongoDB"
+import Flower, { IFlower } from "@/models/Flower"
+import FlowerCard from "@/components/FlowerCard/page"
 
 export default async function Home() {
+  await connectDB()
+  const flowers = await Flower.find().lean<IFlower[]>()
+  console.log(flowers)
+
   return (
     <>
       <Header />
       <main className="wrapp-1200">
         <div className={st["prod-title"]}>All Products</div>
-        <Link href={"add-flower"} className={st["add-flower-link"]}>
-          <Image src={plus} alt="plus" className={st["plus-img"]}></Image>
-          Add Flower
-        </Link>
-        <div className={st["content-wrapp"]}>
+        <div className={st["content-block"]}>
           <div className={st["category-wrapp"]}>
+            <Link href={"add-flower"} className={st["add-flower-link"]}>
+              <Image src={plus} alt="plus" className={st["plus-img"]}></Image>
+              Add Flower
+            </Link>
+            <div className={st["category-button"]}>All Flowers</div>
             {categories.map((category) => (
               <div key={category} className={st["category-button"]}>
                 {category}
               </div>
             ))}
           </div>
-          <div>
-            
+          <div className={st["content-wrapp"]}>
+            {flowers.map((flower) => (
+              <FlowerCard key={flower._id.toString()} flower={flower} />
+            ))}
           </div>
         </div>
       </main>
