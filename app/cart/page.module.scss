@@ -1,0 +1,103 @@
+.cart {
+  padding: 20px 0;
+}
+
+.cart-wrapp {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.cart-form {
+  flex: 0 0 40%;
+  padding: 0 10px;
+}
+
+.cart-list {
+  flex: 0 0 60%;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-weight: 500;
+  }
+
+  input,
+  textarea {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+  }
+}
+
+.card-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.cart-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.card-title {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.empty-cart {
+  margin: 20px auto;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.card-price {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // якщо хочеш рознести контент зверху/знизу
+  flex: 1;
+}
+
+.card-price-span {
+  color: #01c301;
+}
+
+.total-wrapp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}

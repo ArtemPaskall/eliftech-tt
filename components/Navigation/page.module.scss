@@ -1,0 +1,38 @@
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f3f3f3;
+  padding: 15px 25px;
+  border-radius: 25px;
+}
+
+.header-nav-inner {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  color: #525252;
+}
+
+.cart {
+  position: relative;
+}
+
+.cart-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+
+  color: #fff;
+  font-size: 12px;
+}

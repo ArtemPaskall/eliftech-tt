@@ -1,6 +1,16 @@
 "use client"
-import { createContext, useContext, useState, ReactNode } from "react"
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react"
 import { FlowerType } from "@/models/Flower"
+import {
+  saveCartToLocalStorage,
+  getCartFromLocalStorage,
+} from "@/lib/localStorageHndler"
 
 export type CartItem = FlowerType & { quantity: number }
 
@@ -16,6 +26,17 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([])
+
+  useEffect(() => {
+    const storedCart = getCartFromLocalStorage()
+    if (storedCart.length > 0) {
+      setCart(storedCart)
+    }
+  }, [])
+
+  useEffect(() => {
+    saveCartToLocalStorage(cart)
+  }, [cart])
 
   const addToCart = (flower: FlowerType) => {
     setCart((prev) => {

@@ -4,6 +4,7 @@ import "./styles/globals.scss"
 import { CartProvider } from "@/context/CartContext"
 
 const geistSans = Geist({
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-geist-sans",
   subsets: ["latin"],
 })
@@ -15,7 +16,7 @@ const playballSans = Playball({
 })
 
 const roboto = Roboto({
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-roboto",
 })

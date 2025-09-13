@@ -14,7 +14,10 @@ export default function FlowerCard({ flower }: { flower: FlowerType }) {
         height={75}
         className={st["flower-img"]}
       />
-      <div>{flower.title}</div>
+      <div className={st["flower-title"]}>{flower.title}</div>
+      <div className={st["flower-category"]}>
+        <span className={st["category-span"]}>Category:</span> {flower.category}
+      </div>
 
       <div className={st["price-wrapp"]}>
         <div className={st["price-title"]}>{flower.price} $</div>

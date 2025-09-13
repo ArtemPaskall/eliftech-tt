@@ -1,30 +1,13 @@
-"use client"
 import st from "./page.module.scss"
 import "@/app/styles/globals.scss"
 import Image from "next/image"
-import Link from "next/link"
-import { useCart } from "@/context/CartContext"
+import Navigation from "@/components/Navigation/page"
 
 export default function Header() {
-  const { cart } = useCart()
-
   return (
     <header className={st["header"]}>
       <div className="wrapp-1200">
-        <nav className={st["header-nav"]}>
-          <ul className={st["header-nav-inner"]}>
-            <li>
-              <Link href={"/"}>Home</Link>
-            </li>
-            <li>History</li>
-            <li>Coupons</li>
-          </ul>
-
-          <Link href="cart" className={st["cart"]}>
-            <Image src="cart.svg" alt="cart" width={35} height={35}></Image>
-            <div className={st["cart-value"]}>{cart.length}</div>
-          </Link>
-        </nav>
+        <Navigation />
         <div className={st["header-wrapp"]}>
           <Image
             src="/header-bouquet.png"
