@@ -10,13 +10,13 @@ export default function Header() {
         <Navigation />
         <div className={st["header-wrapp"]}>
           <Image
-            src="/header-bouquet.png"
+            src="/header-img.png"
             alt="Flower"
-            width={400}
+            width={600}
             height={400}
             className={st["header-bouquet"]}
           ></Image>
-          <div>
+          <div className={st["header-content"]}>
             <div className={st["shop-name"]}>flower boutique</div>
             <div className={st["shop-description"]}>
               Fresh, hand-picked flowers and unique bouquets, crafted to

@@ -2,14 +2,14 @@ import Flower from "@/models/Flower"
 import connectDB from "@/lib/mongoDB"
 
 interface PATCHContext {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export async function PATCH(req: Request, context: PATCHContext) {
   try {
     await connectDB()
 
-    const id = context.params.id
+    const { id } = await context.params
 
     if (!id) {
       return new Response(JSON.stringify({ message: "ID is required" }), {

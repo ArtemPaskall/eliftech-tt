@@ -30,12 +30,14 @@ export default async function Home() {
               <Image src={plus} alt="plus" className={st["plus-img"]}></Image>
               Add Flower
             </Link>
-            <div className={st["category-button"]}>All Flowers</div>
-            {categories.map((category) => (
-              <div key={category} className={st["category-button"]}>
-                {category}
-              </div>
-            ))}
+            <div className={st["category-wrapp-2"]}>
+              <div className={st["category-button"]}>All Flowers</div>
+              {categories.map((category) => (
+                <div key={category} className={st["category-button"]}>
+                  {category}
+                </div>
+              ))}
+            </div>
           </div>
           <div className={st["content-wrapp"]}>
             {flowers.map((flower) => (
