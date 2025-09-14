@@ -5,6 +5,7 @@ export type OrderItemType = {
   title: string
   price: number
   quantity: number
+  flowerImg: string
 }
 
 export type OrderType = {
@@ -26,6 +27,7 @@ const OrderItemSchema = new Schema<OrderItemType>({
   title: { type: String, required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
+  flowerImg: { type: String, required: true },
 })
 
 const OrderSchema = new Schema<OrderType>({
