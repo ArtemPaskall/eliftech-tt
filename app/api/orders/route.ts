@@ -21,11 +21,11 @@ export async function POST(req: Request) {
       { success: true, orderId: newOrder.id },
       { status: 201 }
     )
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in POST /api/orders:", error)
-    return NextResponse.json(
-      { error: error.message || "Unknown error" },
-      { status: 500 }
-    )
+
+    const message = error instanceof Error ? error.message : "Unknown error"
+
+    return NextResponse.json({ error: message }, { status: 500 })
   }
 }

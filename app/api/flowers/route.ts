@@ -11,11 +11,11 @@ export async function POST(req: Request) {
     const newFlower = await Flower.create(data)
 
     return NextResponse.json(newFlower, { status: 201 })
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in POST /api/flowers:", error)
-    return NextResponse.json(
-      { error: error.message || "Unknown error" },
-      { status: 500 }
-    )
+
+    const message = error instanceof Error ? error.message : "Unknown error"
+
+    return NextResponse.json({ error: message }, { status: 500 })
   }
 }
