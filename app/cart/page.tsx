@@ -4,11 +4,13 @@ import "@/app/styles/globals.scss"
 import st from "./page.module.scss"
 import { useCart } from "@/context/CartContext"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 export default function Cart() {
   const router = useRouter()
+
   const {
     cart,
     removeOneFromCart,
@@ -38,7 +40,7 @@ export default function Cart() {
     const order = {
       user: formData,
       items: cart,
-      total: totalPrice,
+      total: discountedTotal,
     }
 
     try {
@@ -57,6 +59,30 @@ export default function Cart() {
       console.error(err)
       alert("Failed to create order")
     }
+  }
+
+  const [discountedTotal, setDiscountedTotal] = useState(totalPrice)
+  const [coupon, setCoupon] = useState<number | null>(null)
+  const [isCouponApplied, setIsCouponApplied] = useState(false)
+
+  useEffect(() => {
+    const storedCoupon = localStorage.getItem("coupon")
+    if (storedCoupon) {
+      setCoupon(parseInt(storedCoupon, 10))
+    }
+    setDiscountedTotal(totalPrice)
+  }, [totalPrice])
+
+  const applyCoupon = () => {
+    if (!coupon) return
+
+    const discounted = totalPrice * (1 - coupon / 100)
+    setDiscountedTotal(discounted)
+    setIsCouponApplied(true)
+
+    localStorage.removeItem("coupon")
+
+    alert(`Coupon applied! New total: ${discounted.toFixed(2)} $`)
   }
 
   return (
@@ -133,7 +159,7 @@ export default function Cart() {
                         onClick={() => removeFromCart(item._id)}
                       />
                       <Image
-                        src="/flowers/0.jpg"
+                        src={`/flowers/${item.flowerImg}`}
                         alt="flower"
                         width={150}
                         height={150}
@@ -176,9 +202,35 @@ export default function Cart() {
                     </li>
                   ))}
                 </ul>
+
+                {coupon ? (
+                  !isCouponApplied && (
+                    <button
+                      onClick={applyCoupon}
+                      className={st["coupon-apply"]}
+                    >
+                      Apply Coupon: {coupon}%
+                    </button>
+                  )
+                ) : (
+                  <div>
+                    <Link href="/coupons" className={st["coupon-link"]}>
+                      Have a coupon? Copy it here
+                      <Image
+                        src={"/arrow.jpg"}
+                        alt="Arrow"
+                        width={35}
+                        height={35}
+                      />
+                    </Link>
+                  </div>
+                )}
+
                 <div className={st["price-total"]}>
                   <div className={st["total-title"]}>Total:</div>
-                  <div className={st["total-price"]}>{totalPrice} $</div>
+                  <div className={st["total-price"]}>
+                    {discountedTotal.toFixed(0)} $
+                  </div>
                 </div>
               </div>
             )}

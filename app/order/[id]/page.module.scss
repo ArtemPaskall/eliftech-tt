@@ -1,3 +1,5 @@
+@use "../../styles/mixins.scss" as *;
+
 .order {
   padding: 20px 0 100px;
 }
@@ -46,11 +48,11 @@
   width: 100%;
 }
 .order-quantity {
-  font-size: 30px;
+  font-size: clamp(16px, 3vw, 30px);
   font-weight: 500;
 }
 .order-price {
-  font-size: 30px;
+  font-size: clamp(16px, 3vw, 30px);
   font-weight: 500;
   color: #0ea454;
 }
@@ -71,4 +73,17 @@
 .order-wrapp div:nth-child(2) {
   font-size: 16px;
   font-weight: 500;
+}
+
+@include mobile {
+  .order-item-img {
+    width: 100px;
+  }
+  .order-wrapp div:first-child {
+    font-size: 18px;
+  }
+  .order-wrapp div:nth-child(2) {
+    font-size: 14px;
+    font-weight: 500;
+  }
 }

@@ -22,3 +22,24 @@ body {
     padding: 0 20px;
   }
 }
+
+.not-found-wrapp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.dead-img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+.not-found-text {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 500;
+}

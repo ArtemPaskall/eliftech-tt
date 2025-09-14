@@ -1,0 +1,68 @@
+.coupons {
+  padding: 20px 0 100px;
+}
+.coupons-wrapp {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.coupons-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #323232;
+  border-radius: 4px;
+  width: 100%;
+  padding: 25px;
+}
+.discount-title {
+  color: #e65353;
+  text-align: center;
+  font-size: 32px;
+  font-family: var(--font-playball);
+}
+.discount-value {
+  color: #01c301;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.copy-button {
+  cursor: pointer;
+  color: #fff;
+  width: 100%;
+  max-width: 350px;
+  height: 50px;
+  font-family: var(--font-geist-sans);
+  text-transform: uppercase;
+  background-color: #13ac13;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 0;
+  font-size: 20px;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: flex;
+}
+
+@media (max-width: 950px) {
+  .coupons-wrapp {
+    flex-direction: column;
+  }
+  .discount-title {
+    font-size: 22px;
+  }
+  .discount-value {
+    font-size: 22px;
+  }
+  .copy-button {
+    font-size: 16px;
+    height: 35px;
+    max-width: 200px;
+  }
+}
+

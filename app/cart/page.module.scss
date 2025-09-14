@@ -1,3 +1,5 @@
+@use "../styles/mixins.scss" as *;
+
 .cart {
   padding: 20px 0 100px;
 }
@@ -15,13 +17,6 @@
   flex: 0 0 60%;
 }
 .cart-list {
-  // padding: 0 10px;
-  // display: flex;
-  // flex-direction: column;
-  // gap: 15px;
-  // height: 370px;
-  // overflow: hidden;
-
   padding: 0 10px;
   display: flex;
   flex-direction: column;
@@ -178,4 +173,60 @@
   transition: all 0.3s;
   text-transform: uppercase;
   font-weight: 600;
+}
+
+@include mobile {
+  .cart-wrapp {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .cart-form {
+    order: 2;
+    width: 100%;
+    padding: 0;
+  }
+
+  .cart-list {
+    height: fit-content;
+    padding: 0;
+  }
+
+  .cart-block {
+    width: 100%;
+  }
+}
+.coupon-link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  font-size: 20px;
+  padding-left: 10px;
+  color: #404040;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.coupon-link:hover {
+  transform: scale(1.05);
+}
+.coupon-apply {
+  cursor: pointer;
+  color: #fff;
+  width: 100%;
+  max-width: 150px;
+  height: 50px;
+  font-family: var(--font-geist-sans);
+  text-transform: uppercase;
+  background-color: #00c200;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: flex;
 }

@@ -1,0 +1,68 @@
+.history {
+  padding: 20px 0 100px;
+}
+.history-header {
+  text-align: center;
+  font-size: 42px;
+  margin-top: 10px;
+}
+.not-found-text {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 20px;
+}
+.history-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.history-item {
+  border: 1px solid #575757;
+  padding: 10px;
+  border-radius: 4px;
+}
+.order-header {
+  text-align: center;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 500;
+}
+.order-total {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+.order-items {
+  font-size: 20px;
+  font-weight: 500;
+}
+.order-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+.order-item-wrapp {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.order-text {
+  font-size: 20px;
+}
+.order-green {
+  color: #01c301;
+}
+.order-total-discount {
+  font-size: 16px;
+}
+
+@media (max-width: 800px) {
+  .history-list {
+    grid-template-columns: 1fr; /* тепер один елемент в рядок */
+  }
+}

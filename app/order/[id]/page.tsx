@@ -29,8 +29,6 @@ export default async function OrderPage({ params }: Props) {
       })),
     }
 
-    console.log(order)
-
     return (
       <div className={st["order"]}>
         <div className="wrapp-1200">
