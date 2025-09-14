@@ -13,10 +13,11 @@ export default async function Home() {
   await connectDB()
   const flowersFromDb = await Flower.find().lean()
 
-  const flowers: FlowerType[] = flowersFromDb.map((f) => ({
+  const flowers: FlowerType[] = flowersFromDb.map((f, index) => ({
     ...f,
     _id: f._id.toString(),
     createdAt: new Date(f.createdAt).toISOString(),
+    flowerImg: `${index % 10}.jpg`,
   }))
 
   return (
