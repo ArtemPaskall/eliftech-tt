@@ -9,6 +9,7 @@ export type FlowerType = {
   price: number
   favourite: boolean
   createdAt: string
+  flowerImg?: string
 }
 
 const FlowerSchema = new Schema<FlowerType>({
@@ -23,7 +24,7 @@ const FlowerSchema = new Schema<FlowerType>({
   favourite: { type: Boolean, default: false },
   createdAt: {
     type: String,
-    default: () => new Date().toISOString(), 
+    default: () => new Date().toISOString(),
   },
 })
 

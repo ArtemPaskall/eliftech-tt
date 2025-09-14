@@ -8,7 +8,7 @@ export default function FlowerCard({ flower }: { flower: FlowerType }) {
   return (
     <div className={st["flower-card"]}>
       <Image
-        src={"/flowers/0.jpg"}
+        src={`/flowers/${flower.flowerImg}`}
         alt="Flower"
         width={75}
         height={75}
