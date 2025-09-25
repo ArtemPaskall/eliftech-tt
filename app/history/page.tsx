@@ -5,6 +5,8 @@ import connectDB from "@/lib/mongoDB"
 import Order from "@/models/Orders"
 import Image from "next/image"
 
+export const dynamic = "force-dynamic"
+
 export default async function History() {
   try {
     await connectDB()
